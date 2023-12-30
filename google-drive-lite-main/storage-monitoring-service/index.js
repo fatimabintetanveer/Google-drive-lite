@@ -6,7 +6,7 @@ const { Image } = require('./db'); // Import the Image model from the db module
 
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 8080;
 
 app.use(cors());
 
