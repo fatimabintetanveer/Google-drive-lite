@@ -28,7 +28,7 @@ app.post('/api/uploadImage', upload.single('image'), async (req, res) => {
     const imageSize = Buffer.byteLength(req.file.buffer); // size in bytes
 
     // Make the inner API request to check if bandwidth is available
-    const innerApiResponse = await fetch('http://localhost:3400/api/getBandwidthUsed', {
+    const innerApiResponse = await fetch('https://usage-monitoring-service-a7wjny6bua-uc.a.run.app/api/getBandwidthUsed', {
       method: 'POST',
       body: JSON.stringify({ userId: userId, imageSize: imageSize }),
       headers: {
@@ -69,7 +69,7 @@ app.post('/api/uploadImage', upload.single('image'), async (req, res) => {
         await newImage.save();
 
         //send usage monitoring a request to update the used bandwidth
-        const updateBandwidthUsage = await fetch('http://localhost:3400/api/updateBandwidthUsed', {
+        const updateBandwidthUsage = await fetch('https://usage-monitoring-service-a7wjny6bua-uc.a.run.app/api/updateBandwidthUsed', {
           method: 'POST',
           body: JSON.stringify({ userId: userId, imageSize: imageSize }),
           headers: {
@@ -110,7 +110,7 @@ app.post('/api/uploadImage', upload.single('image'), async (req, res) => {
       // The boolean response is false, do not save the image
       console.log("Not enough bandwidth");
       const message = 'Daily bandwidth limit of '+maxBandwidth+' bytes exceeded. Upload not possible.';
-      const innerApiResponse = await fetch('http://localhost:3400/api/displayBandwidthAlert', {
+      const innerApiResponse = await fetch('https://usage-monitoring-service-a7wjny6bua-uc.a.run.app/api/displayBandwidthAlert', {
       method: 'POST',
       body: JSON.stringify({ alertMessage: message }),
       headers: {
@@ -151,7 +151,7 @@ app.post('/api/deleteImage', async (req, res) => {
         console.log("---------");
         console.log(imageSize);
         console.log(userId);
-        const innerApiResponse = await fetch('http://localhost:3400/api/getBandwidthUsed', {
+        const innerApiResponse = await fetch('https://usage-monitoring-service-a7wjny6bua-uc.a.run.app/api/getBandwidthUsed', {
           method: 'POST',
           body: JSON.stringify({ userId: userId, imageSize: imageSize }),
           headers: {
@@ -167,7 +167,7 @@ app.post('/api/deleteImage', async (req, res) => {
         if (innerApiData && innerApiData.bandwidthAvailable === true) {
           await existingImage.deleteOne();
 
-          const updateBandwidthUsage = await fetch('http://localhost:3400/api/updateBandwidthUsed', {
+          const updateBandwidthUsage = await fetch('https://usage-monitoring-service-a7wjny6bua-uc.a.run.app/api/updateBandwidthUsed', {
             method: 'POST',
             body: JSON.stringify({ userId: userId, imageSize: imageSize }),
             headers: {
@@ -191,7 +191,7 @@ app.post('/api/deleteImage', async (req, res) => {
         } else {
           console.log("Not enough bandwidth");
           const message = 'Daily bandwidth limit of '+maxBandwidth+' bytes exceeded. Deletion not possible.';
-          const innerApiResponse = await fetch('http://localhost:3400/frontend/api/displayBandwidthAlert', {
+          const innerApiResponse = await fetch('https://usage-monitoring-service-a7wjny6bua-uc.a.run.app/frontend/api/displayBandwidthAlert', {
           method: 'POST',
           body: JSON.stringify({ alertMessage: message }),
           headers: {
