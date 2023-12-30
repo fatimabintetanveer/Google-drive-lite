@@ -81,7 +81,7 @@ app.post('/api/uploadImage', upload.single('image'), async (req, res) => {
 
         console.log(bandwidthUpdated.db_status);
 
-        const log = await fetch('http://localhost:3004/logs/', {
+        const log = await fetch('https://logging-service-a7wjny6bua-uc.a.run.app/logs/', {
           method: 'POST',
           body: JSON.stringify({ time: new Date(),size: `${imageSize}`, service: 'stored', message: `New Image for USER ID: ${userId} saved.` }),
           headers: {
@@ -98,7 +98,7 @@ app.post('/api/uploadImage', upload.single('image'), async (req, res) => {
         // The total size exceeds the limit, do not save the image
         console.log("Not enough storage");
         res.json({ message: 'Image not uploaded. Storage limit exceeded.' });
-        const log = await fetch('http://localhost:3004/logs/', {
+        const log = await fetch('https://logging-service-a7wjny6bua-uc.a.run.app/logs/', {
           method: 'POST',
           body: JSON.stringify({ time: new Date(),size:`${imageSize}`, service: 'not stored', message: `New Image for USER ID: ${userId} not saved due to lack of storage` }),
           headers: {
@@ -123,7 +123,7 @@ app.post('/api/uploadImage', upload.single('image'), async (req, res) => {
       console.log(innerApiData.alertDisplayStatus);
       res.json({ message: 'Image not uploaded, bandwidth limit exceeded.' });
 
-      const log = await fetch('http://localhost:3004/logs/', {
+      const log = await fetch('https://logging-service-a7wjny6bua-uc.a.run.app/logs/', {
           method: 'POST',
           body: JSON.stringify({ time: new Date(),size:`${imageSize}`, service: 'not stored', message: `New Image for USER ID: ${userId} not saved due to bandwidth shortage.` }),
           headers: {
@@ -179,7 +179,7 @@ app.post('/api/deleteImage', async (req, res) => {
 
           console.log(bandwidthUpdated.db_status);
 
-          const log = await fetch('http://localhost:3004/logs/', {
+          const log = await fetch('https://logging-service-a7wjny6bua-uc.a.run.app/logs/', {
           method: 'POST',
           body: JSON.stringify({ time: new Date(),size:`${imageSize}`,  service: 'deleted', message: `Image with ID: ${imageId} for USER ID: ${userId} deleted.` }),
           headers: {
@@ -203,7 +203,7 @@ app.post('/api/deleteImage', async (req, res) => {
 
           console.log(innerApiData.alertDisplayStatus);
 
-          const log = await fetch('http://localhost:3004/logs/', {
+          const log = await fetch('https://logging-service-a7wjny6bua-uc.a.run.app/logs/', {
           method: 'POST',
           body: JSON.stringify({ time: new Date(), size: `${imageSize}`, service: 'not deleted', message: `Image with ID: ${imageId} for USER ID: ${userId} not deleted due to bandwidth shortage.` }),
           headers: {
