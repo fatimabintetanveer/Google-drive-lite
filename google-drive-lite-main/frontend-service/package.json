@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start" : "node index.js"
+    "start" : "node src/pages/cloud/index.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
