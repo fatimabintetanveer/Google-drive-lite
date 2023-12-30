@@ -4,7 +4,7 @@ const express = require('express');
 const logs_router = require('./logs');
 
 const app = express();
-const port = 8080; // Set the desired port number
+const port = process.env.PORT || 8080;
 
 app.use('/logs', logs_router);
 
