@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900');
+
+* {
+    font-family: 'Inter';
+    color: black;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.navbar > .links {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.links > .items {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
+.links > .actions {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+    align-items: center;
+}
+
+.links > .items > .item {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.links > .actions > .action {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem;
+}
+
+.items:hover, .action:hover {
+    cursor: pointer;
+}
+
+.action.red {
+    background-color: crimson;
+    color: rgb(224, 149, 164);
+}
+
+div {
+    border-radius: 5px;
+}

@@ -1,0 +1,99 @@
+.background {
+  background: linear-gradient(to right, #3498db, #8e44ad);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  color: #fff;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checkButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+
+.addCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align : center;
+  width: 200px;
+  height: 300px;
+  margin: 20px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 36px;
+  border: 2px dashed #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.addCard:hover {
+  background-color: #2980b9;
+}
+
+.file {
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  z-index: 100;
+}
+
+.icon {
+  position : absolute;
+}
