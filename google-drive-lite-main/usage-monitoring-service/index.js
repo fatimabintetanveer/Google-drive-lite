@@ -4,7 +4,7 @@ const cors = require('cors');
 const { BandwidthUsage } = require('./db'); // Import the BandwidthUsage model from the db module
 
 const app = express();
-const port = 3400;
+const port = process.env.PORT || 8080
 
 app.use(cors());
 
